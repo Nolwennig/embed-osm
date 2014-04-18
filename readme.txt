@@ -41,6 +41,10 @@ Map layer seleced by shortcode is higher priority than plugin setting.
 
 == Changelog ==
 
+= 1.1 =
+
+* Added 'Get Current Position' button. See screenshots.
+
 = 1.0 =
 
-* Initial release
+* Initial release.

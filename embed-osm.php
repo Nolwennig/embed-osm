@@ -3,7 +3,7 @@
 	Plugin Name: Embed OSM
 	Plugin URI: http://midoriit.com/works/embed-osm.html
 	Description: Embed OpenStreetMap on the page/post.
-	Version: 1.0
+	Version: 1.1
 	Author: Midori IT Office, LLC
 	Author URI: http://midoriit.com/
 	License: GPLv2 or later
@@ -120,7 +120,8 @@ class Embed_OSM {
 				echo '<option value="'.$ly.'">'.$ly.'</option>';
 			}
 		}
-		echo '</select><br /><br />';
+		echo '</select> ';
+		echo '<a class="button" onClick="embed_osm_get_cur_pos();">'.__( 'Get Current Position', 'embed-osm' ).'</a><br /><br />';
 		echo '<div id="embmapdiv" style="width:'.$width.'px;height:'.$height.'px;">';
 		echo '</div><br />';
 		echo '<textarea id="embed_osm_shortcode" rows="2" style="max-width:100%;min-width:100%" onClick="this.select();" readonly>';
@@ -191,13 +192,26 @@ class Embed_OSM {
 				embed_osm_shortcode.value = "[embed_osm" +
 					" lat=\"" + Math.round( lonLat.lat * 100000 ) / 100000 + "\"" +
 					" lon=\"" + Math.round( lonLat.lon * 100000 ) / 100000 + "\"" +
-					" zoom=\"" + map.getZoom() + "\"" +
+					" zoom=\"" + zoom + "\"" +
 					layer + "]";
 				embed_osm_shortcode.select();
 			};
 
 			function embed_osm_moveend() {
+				zoom = map.getZoom();
 				embed_osm_genshortcode();
+			}
+
+			function embed_osm_get_cur_pos() {
+				if( navigator.geolocation ) {
+					navigator.geolocation.getCurrentPosition(
+						function(pos) {
+							lonLat = new OpenLayers.LonLat( pos.coords.longitude, pos.coords.latitude ).transform(
+								new OpenLayers.Projection( "EPSG:4326" ),
+								map.getProjectionObject() );
+							map.setCenter( lonLat, zoom );
+						} );
+				}
 			}
 
 			embed_osm_showmap();
@@ -381,6 +395,7 @@ class Embed_OSM {
 		echo __( 'Zoom', 'embed-osm' ).
 			' : <input type="text" id="embed_osm_zoom" name="embed_osm_zoom" value="'.
 			$zoom.'" size="5" readonly><br /><br />';
+		echo '<a class="button" onClick="embed_osm_get_cur_pos();">'.__( 'Get Current Position', 'embed-osm' ).'</a><br /><br />';
 		echo '<div id="defmapdiv" style="width:'.$width.'px;height:'.$height.
 			'px;"></div></td></tr>';
 		echo '<tr><td>'.__( 'Marker', 'embed-osm' ).
@@ -481,11 +496,24 @@ class Embed_OSM {
 					new OpenLayers.Projection( "EPSG:4326" ) );
 				embed_osm_lat.value = Math.round( lonLat.lat * 100000 ) / 100000;
 				embed_osm_lon.value = Math.round( lonLat.lon * 100000 ) / 100000;
-				embed_osm_zoom.value = map.getZoom();
+				embed_osm_zoom.value = zoom;
 			}
 
 			function embed_osm_moveend2() {
+				zoom = map.getZoom();
 				embed_osm_getvalue();
+			}
+
+			function embed_osm_get_cur_pos() {
+				if( navigator.geolocation ) {
+					navigator.geolocation.getCurrentPosition(
+						function(pos) {
+							lonLat = new OpenLayers.LonLat( pos.coords.longitude, pos.coords.latitude ).transform(
+								new OpenLayers.Projection( "EPSG:4326" ),
+								map.getProjectionObject() );
+							map.setCenter( lonLat, zoom );
+						} );
+				}
 			}
 
 			embed_osm_showmap2();
