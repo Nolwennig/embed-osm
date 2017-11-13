@@ -2,7 +2,7 @@
 Contributors: tk01k
 Tags: OpenStreetMap
 Requires at least: 3.8
-Tested up to: 4.2.2
+Tested up to: 4.8
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -40,6 +40,10 @@ Map layer seleced by shortcode is higher priority than plugin setting.
 1. Plugin setting page. You can specify size of map, home position, type of marker and so on.
 
 == Changelog ==
+
+= 1.2 =
+
+* Use https for 'tile.openstreetmap.org'.
 
 = 1.1 =
 

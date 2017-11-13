@@ -1,11 +1,11 @@
 <?php
 /*
 	Plugin Name: Embed OSM
-	Plugin URI: http://midoriit.com/works/embed-osm.html
+	Plugin URI: https://midoriit.com/works/embed-osm.html
 	Description: Embed OpenStreetMap on the page/post.
-	Version: 1.1
+	Version: 1.2
 	Author: Midori IT Office, LLC
-	Author URI: http://midoriit.com/
+	Author URI: https://midoriit.com/
 	License: GPLv2 or later
 	Text Domain: embed-osm
 	Domain Path: /languages/
@@ -17,9 +17,9 @@ class Embed_OSM {
 
 	/** OpenStreetMap tile server definition */
 	const MAPNIK_URL = 
-		'["http://a.tile.openstreetmap.org/${z}/${x}/${y}.png",
-		"http://b.tile.openstreetmap.org/${z}/${x}/${y}.png",
-		"http://c.tile.openstreetmap.org/${z}/${x}/${y}.png"]';
+		'["https://a.tile.openstreetmap.org/${z}/${x}/${y}.png",
+		"https://b.tile.openstreetmap.org/${z}/${x}/${y}.png",
+		"https://c.tile.openstreetmap.org/${z}/${x}/${y}.png"]';
 	const CYCLE_URL = 
 		'["http://a.tile.opencyclemap.org/cycle/${z}/${x}/${y}.png",
 		"http://b.tile.opencyclemap.org/cycle/${z}/${x}/${y}.png",

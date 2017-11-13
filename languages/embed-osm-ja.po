@@ -1,5 +1,5 @@
-msgid "http://midoriit.com/works/embed-osm.html"
-msgstr "http://midoriit.com/works/embed-osm-ja.html"
+msgid "https://midoriit.com/works/embed-osm.html"
+msgstr "https://midoriit.com/works/embed-osm-ja.html"
 msgid "Embed OpenStreetMap on the page/post."
 msgstr "OpenStreetMapの地図を投稿や固定ページに埋め込みます。"
 msgid "Midori IT Office, LLC"
